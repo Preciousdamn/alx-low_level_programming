@@ -1,23 +1,32 @@
 #include "main.h"
-#include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
 /**
- * main - generates random passwords for 101-crackme
- * Return: zero
+ * _atoi - Convert a string to integer.
+ * @s: char array string
+ * Return: first integer found in string
  */
-int main(void)
+int _atoi(char *s)
 {
-	int sum;
-	char c;
+	int i;
+	int h, p;
 
-	srand(time(NULL));
-	while (sum <= 2645)
+	h = 0;
+	p = -1;
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		c = rand() % 128;
-		sum += c;
-		putchar(c);
+		if (s[i] == '-')
+			p *= -1;
+		if (s[i] > 47 && s[i] < 58)
+		{
+			if (h < 0)
+				h = (h * 10) - (s[i] - '0');
+			else
+				h = (s[i] - '0') * -1;
+
+			if (s[i + 1] < 48 || s[i + 1] > 57)
+				break;
+		}
 	}
-	putchar(2772 - sum);
-	return (0);
+	if (p < 0)
+		h *= -1;
+	return (h);
 }
