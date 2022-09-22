@@ -1,55 +1,31 @@
 #include "main.h"
-
 /**
- * _strlen - returns the length of a string
- * @s: string
- * Return: returns length as integer;
+ * cap_string - capitalizes everey word of a string
+ *
+ * @s: string to modify
+ *
+ * Return: the resulting string
  */
 
-int _strlen(char *s)
+char *cap_string(char *s)
 {
-	int len = 0;
+	int x = 0, y;
+	char special[13] = {9, 10, 32, 33, 34, 40, 41,
+		44, 46, 59, 63, 123, 125};
 
-	while (*(s + len) != '\0')
-		len++;
-
-	return (len);
-}
-
-/**
- * cap_string -function that capitalize first character of a word
- * @str: string to capitalize
- * Return: returns the capitalizeed string
- */
-
-char *cap_string(char *str)
-{
-	int index = 0;
-
-	while (str[++index])
+	while (*(s + x))
 	{
-		while (!(str[index] >= 'a') && (str[index] <= 'z'))
-			index++;
-
-		if (str[index - 1] == ' ' ||
-				str[index - 1] == '\t' ||
-				str[index - 1] == '\n' ||
-				str[index - 1] == ',' ||
-				str[index - 1] == ';' ||
-				str[index - 1] == '.' ||
-				str[index - 1] == ',' ||
-				str[index - 1] == '.' ||
-				str[index - 1] == ',' ||
-				str[index - 1] == '!' ||
-				str[index - 1] == '?' ||
-				str[index - 1] == '"' ||
-				str[index - 1] == '(' ||
-				str[index - 1] == ')' ||
-				str[index - 1] == '{' ||
-				str[index - 1] == '}')
-			str[index] -= 32;
+		for (y = 0; y < 13; y++)
+		{
+			if (x == 0 && s[x] >= 97 && s[x] <= 122)
+				s[x] -= 32;
+			if (s[x - 1] == special[y])
+			{
+				if ((*(s + x) >= 97) &&  (*(s + x) <= 122))
+					*(s + x) -= 32;
+			}
+		}
+		x++;
 	}
-
-	return (str);
+	return (s);
 }
-
