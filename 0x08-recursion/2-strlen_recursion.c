@@ -1,25 +1,22 @@
 #include "main.h"
 /**
- * factorial - function to return the factorial
+ * _strlen_recursion - function to count the
+ * number of caracters in the string
  *
- * @n: parameter
+ * @s: parameter
  *
- * Return: end program
+ * Return: end function
  */
 
-int factorial(int n)
+int _strlen_recursion(char *s)
 {
-	if (n < 0)
+	int n = 1;
+
+	if (*s != '\0')
 	{
-		return (-1);
-	}
-	else if (n == 0)
-	{
-		return (1);
-	}
-	else
-	{
-		n = n * factorial(n - 1);
+		s++;
+		n = n + _strlen_recursion(s);
+
 		return (n);
 	}
 	return (0);
