@@ -1,4 +1,4 @@
-fndef _MAIN_H_
+#ifndef _MAIN_H_
 #define _MAIN_H_
 
 int _putchar(char c);
@@ -22,4 +22,4 @@ unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 
-#endi#ifndef _MAIN_H_
+#endif
